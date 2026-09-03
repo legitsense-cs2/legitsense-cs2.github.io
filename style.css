@@ -1,225 +1,270 @@
-/* Добавь это в конец твоего style.css */
-
-/* ============ Cursor glow ============ */
-.cursor-glow {
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 122, 0, 0.15), transparent 70%);
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: screen;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+:root {
+  --bg: #050708;
+  --bg-soft: #0a0d0f;
+  --panel: rgba(13, 16, 18, 0.82);
+  --panel-strong: #0c0f11;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-orange: rgba(255, 126, 0, 0.32);
+  --text: #f7f7f5;
+  --muted: #9da2a7;
+  --orange: #ff7a00;
+  --orange-light: #ff9b24;
+  --red: #e10600;
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+  --container: 1180px;
 }
 
-body:hover .cursor-glow {
-  opacity: 1;
+.logo-legit {
+  color: #f7f7f5;
 }
 
-/* ============ Particles canvas ============ */
-.particles-canvas {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.6;
+.logo-sense {
+  color: var(--red);
 }
 
-/* ============ Ripple effect ============ */
-.button {
-  position: relative;
-  overflow: hidden;
+* {
+  box-sizing: border-box;
 }
 
-.ripple {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  transform: scale(0);
-  animation: ripple-animation 0.6s ease-out;
-  pointer-events: none;
+html {
+  scroll-behavior: smooth;
 }
 
-@keyframes ripple-animation {
-  to {
-    transform: scale(2.5);
-    opacity: 0;
-  }
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 82% 12%, rgba(255, 112, 0, 0.08), transparent 26rem),
+    linear-gradient(180deg, #050708 0%, #07090a 55%, #040607 100%);
+  font-family: "Inter", Arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* ============ Tilt cards ============ */
-.tilt-card {
-  transition: transform 0.3s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-  will-change: transform;
+a {
+  color: inherit;
 }
 
-/* ============ Magnetic buttons ============ */
-.magnetic-btn {
-  transition: transform 0.15s ease;
-  will-change: transform;
+img {
+  max-width: 100%;
 }
 
-/* ============ Animated gradient background ============ */
-body::before {
-  content: '';
+code {
+  color: #ffb15f;
+  font-family: Consolas, monospace;
+}
+
+.container {
+  width: min(calc(100% - 40px), var(--container));
+  margin: 0 auto;
+}
+
+.page-noise {
   position: fixed;
   inset: 0;
-  z-index: -1;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(225, 6, 0, 0.06), transparent 25rem),
-    radial-gradient(circle at 80% 20%, rgba(255, 122, 0, 0.04), transparent 30rem);
-  animation: gradientShift 15s ease-in-out infinite alternate;
   pointer-events: none;
+  opacity: 0.22;
+  z-index: 20;
+  background-image:
+    linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
 }
 
-@keyframes gradientShift {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  100% {
-    transform: translate(-10px, -10px) scale(1.05);
-  }
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(4, 6, 7, 0.82);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
 }
 
-/* ============ Enhanced hero art animations ============ */
-.hero-art {
-  will-change: transform;
-  transition: transform 0.1s ease-out;
+.header-inner {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  gap: 34px;
 }
 
-/* ============ Smoother scroll reveal ============ */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
 }
 
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
+.brand-mark,
+.footer-logo {
+  font-size: 26px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -2px;
 }
 
-/* ============ Glowing text effect ============ */
-.hero-cs {
-  text-shadow: 
-    0 0 20px rgba(255, 122, 0, 0.3),
-    0 0 40px rgba(255, 122, 0, 0.2),
-    0 4px 25px rgba(255, 255, 255, 0.06);
-  animation: textGlow 3s ease-in-out infinite alternate;
+.brand-mark span,
+.footer-logo span,
+.hero-cs span {
+  color: var(--orange);
 }
 
-@keyframes textGlow {
-  0% {
-    text-shadow: 
-      0 0 20px rgba(255, 122, 0, 0.3),
-      0 0 40px rgba(255, 122, 0, 0.2),
-      0 4px 25px rgba(255, 255, 255, 0.06);
-  }
-  100% {
-    text-shadow: 
-      0 0 30px rgba(255, 122, 0, 0.5),
-      0 0 60px rgba(255, 122, 0, 0.3),
-      0 4px 35px rgba(255, 255, 255, 0.1);
-  }
+.brand-name {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .04em;
 }
 
-/* ============ Navigation link enhanced hover ============ */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-left: auto;
+}
+
 .nav a {
   position: relative;
-  overflow: hidden;
+  color: #d1d4d6;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  transition: .2s ease;
 }
 
-.nav a::before {
-  content: '';
+.nav a:hover {
+  color: white;
+}
+
+.nav a::after {
+  content: "";
   position: absolute;
-  left: 50%;
-  bottom: -2px;
+  left: 0;
+  bottom: -13px;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--orange), transparent);
-  transform: translateX(-50%);
-  transition: width 0.3s ease;
+  background: var(--orange);
+  transition: .2s ease;
 }
 
-.nav a:hover::before {
-  width: 120%;
+.nav a:hover::after {
+  width: 100%;
 }
 
-/* ============ Feature card glow on hover ============ */
-.feature-card {
+.button {
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-small {
+  min-height: 42px;
+  padding-inline: 18px;
+  font-size: 11px;
+}
+
+.button-outline {
+  border-color: rgba(255, 122, 0, .65);
+  color: var(--orange-light);
+  background: rgba(255, 122, 0, .055);
+}
+
+.button-outline:hover {
+  background: rgba(255, 122, 0, .12);
+}
+
+.button-primary {
+  background: linear-gradient(135deg, #ff9800, #f26400);
+  box-shadow:
+    0 10px 30px rgba(255, 104, 0, .17),
+    inset 0 1px rgba(255,255,255,.25);
+}
+
+.button-primary:hover {
+  box-shadow:
+    0 14px 38px rgba(255, 104, 0, .3),
+    inset 0 1px rgba(255,255,255,.25);
+}
+
+.button-secondary {
+  border-color: var(--line);
+  background: rgba(255,255,255,.025);
+  color: #c8cbce;
+}
+
+.button-secondary:hover {
+  border-color: rgba(255,255,255,.2);
+  color: white;
+}
+
+.hero {
   position: relative;
+  padding: 80px 0 0;
   overflow: hidden;
 }
 
-.feature-card::before {
-  content: '';
+.hero::before {
+  content: "";
   position: absolute;
-  inset: -100%;
-  background: radial-gradient(circle at center, rgba(255, 122, 0, 0.15), transparent 50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(4,6,7,.98) 0%, rgba(4,6,7,.76) 46%, rgba(4,6,7,.28) 75%, rgba(4,6,7,.94) 100%),
+    radial-gradient(circle at 72% 42%, rgba(255, 104, 0, .14), transparent 22rem);
 }
 
-.feature-card:hover::before {
-  opacity: 1;
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(460px, 1.08fr);
+  align-items: center;
+  min-height: 510px;
 }
 
-/* ============ Stats panel pulse ============ */
-.stats-panel.is-visible {
-  animation: panelPulse 0.6s ease-out;
+.hero-copy {
+  position: relative;
+  z-index: 4;
+  padding-bottom: 52px;
 }
 
-@keyframes panelPulse {
-  0% {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.02);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .28em;
 }
 
-/* ============ Reduced motion ============ */
-@media (prefers-reduced-motion: reduce) {
-  .cursor-glow,
-  .particles-canvas,
-  body::before {
-    display: none !important;
-  }
-  
-  .tilt-card:hover,
-  .magnetic-btn {
-    transform: none !important;
-  }
-  
-  .hero-cs {
-    animation: none !important;
-  }
-  
-  .ripple {
-    animation: none !important;
-  }
+.hero h1 {
+  margin: 0;
+  line-height: .9;
+  letter-spacing: -.055em;
 }
 
-/* ============ Mobile optimizations ============ */
-@media (max-width: 760px) {
-  .cursor-glow {
-    display: none;
-  }
-  
-  .particles-canvas {
-    opacity: 0.3;
-  }
-  
-  .tilt-card {
-    transform: none !important;
-  }
-}
+.hero-cs {
+  display: block;
+  font-size: clamp(74px, 9vw, 126px);
+  font-weight: 900;
+  font-style: italic;
+  color: #f3
