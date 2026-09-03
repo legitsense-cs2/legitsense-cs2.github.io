@@ -23,6 +23,8 @@
 </head>
 <body>
   <div class="page-noise"></div>
+  <div class="cursor-glow"></div>
+  <canvas class="particles-canvas"></canvas>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -60,12 +62,12 @@
           </p>
 
           <div class="hero-actions">
-            <a class="button button-primary" href="https://legitsense-cs2.github.io/mod/legitsense_loader.exe" download="legitsense_loader.exe">
+            <a class="button button-primary magnetic-btn" href="https://legitsense-cs2.github.io/mod/legitsense_loader.exe" download="legitsense_loader.exe">
               <span class="download-icon">↓</span>
               Скачать мод
             </a>
 
-            <a class="button button-secondary" href="#about">
+            <a class="button button-secondary magnetic-btn" href="#about">
               Подробнее
               <span>→</span>
             </a>
@@ -76,7 +78,7 @@
           </p>
         </div>
 
-        <div class="hero-art" aria-hidden="true">
+        <div class="hero-art parallax-element" data-speed="0.3" aria-hidden="true">
           <div class="hero-glow"></div>
           <div class="hero-number">2</div>
           <img src="assets/hero-soldier.png" alt="" />
@@ -113,31 +115,31 @@
         </div>
 
         <div class="feature-grid">
-          <article class="feature-card">
+          <article class="feature-card tilt-card">
             <div class="feature-icon">⌖</div>
             <h3>Визуалы</h3>
             <p>Настройка визуального интерфейса и отображаемых элементов.</p>
           </article>
 
-          <article class="feature-card">
+          <article class="feature-card tilt-card">
             <div class="feature-icon">◉</div>
             <h3>Помощь в прицеливании</h3>
             <p>Гибкая система пользовательских параметров и профилей.</p>
           </article>
 
-          <article class="feature-card">
+          <article class="feature-card tilt-card">
             <div class="feature-icon">⚙</div>
             <h3>Настройки</h3>
             <p>Быстрая кастомизация параметров под разные игровые сценарии.</p>
           </article>
 
-          <article class="feature-card">
+          <article class="feature-card tilt-card">
             <div class="feature-icon">⬡</div>
             <h3>Обновления</h3>
             <p>Актуальные сборки, список изменений и удобное обновление файлов.</p>
           </article>
 
-          <article class="feature-card">
+          <article class="feature-card tilt-card">
             <div class="feature-icon">ϟ</div>
             <h3>Оптимизация</h3>
             <p>Лёгкий GUI интерфейса, оптимизированный код без просадок FPS в игре.</p>
@@ -182,15 +184,11 @@
         </div>
 
         <div class="updates-list">
-          <!--
-            Формат даты: дд.мм.гггг чч.мм
-            Копируй <article class="update-item"> целиком для новой записи.
-          -->
           <article class="update-item">
-            <time datetime="2026-09-02T00:33">2026-09-02T00:33</time>
+            <time datetime="2026-09-01T00:00">дд.мм.гггг чч.мм</time>
             <ul>
-              <li>Исправлены краши и вылеты из игры</li>
-              <li>Добавлена синхронизация</li>
+              <li>Пункт обновления</li>
+              <li>Пункт обновления</li>
             </ul>
           </article>
         </div>
@@ -224,29 +222,6 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      var nodes = document.querySelectorAll(
-        ".stats-panel, .section-heading, .feature-card, .about-card, .update-item, .contact-card"
-      );
-      for (var i = 0; i < nodes.length; i++) nodes[i].classList.add("reveal");
-
-      if (!("IntersectionObserver" in window)) {
-        for (var j = 0; j < nodes.length; j++) nodes[j].classList.add("is-visible");
-        return;
-      }
-
-      var io = new IntersectionObserver(function (entries) {
-        for (var k = 0; k < entries.length; k++) {
-          if (entries[k].isIntersecting) {
-            entries[k].target.classList.add("is-visible");
-            io.unobserve(entries[k].target);
-          }
-        }
-      }, { threshold: 0.16, rootMargin: "0px 0px -36px 0px" });
-
-      for (var n = 0; n < nodes.length; n++) io.observe(nodes[n]);
-    })();
-  </script>
+  <script src="animations.js"></script>
 </body>
 </html>
